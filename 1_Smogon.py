@@ -34,7 +34,7 @@ def fetch_smogon_json(urls):
             
             for pkmn, p_data in json_data.items():
                 for category, values in p_data.items():
-                    if isinstance(values, dict):  # e.g., 'Moves', 'Items'
+                    if isinstance(values, dict) and category!='Checks and Counters':  # e.g., 'Moves', 'Items'
                         for key, count in values.items():
                             merged[pkmn][category][key] += count
                     else:
